@@ -122,38 +122,6 @@ def png_to_base64(image_path):
     with open(image_path, "rb") as image_file:
         base64_string = base64.b64encode(image_file.read()).decode('utf-8')
     return base64_string
-# def A8():
-#     input_image = "data/credit_card.png"
-#     output_file = "data/credit-card.txt"
-
-#     # Step 1: Extract text using OCR
-#     try:
-#         image = Image.open(input_image)
-#         extracted_text = pytesseract.image_to_string(image)
-#         print(f"Extracted text:\n{extracted_text}")
-#     except Exception as e:
-#         print(f"❌ Error reading or processing {input_image}: {e}")
-#         return
-
-#     # Step 2: Pass the extracted text to the LLM to validate and extract card number
-#     prompt = f"""Extract the credit card number from the following text. Respond with only the card number, without spaces:
-
-#     {extracted_text}
-#     """
-#     try:
-#         card_number = ask_llm(prompt).strip()
-#         print(f"Card number extracted by LLM: {card_number}")
-#     except Exception as e:
-#         print(f"❌ Error processing with LLM: {e}")
-#         return
-
-#     # Step 3: Save the extracted card number to a text file
-#     try:
-#         with open(output_file, "w", encoding="utf-8") as file:
-#             file.write(card_number + "\n")
-#         print(f"✅ Credit card number saved to: {output_file}")
-#     except Exception as e:
-#         print(f"❌ Error writing {output_file}: {e}")
 
 def A8(filename='/data/credit_card.txt', image_path='/data/credit_card.png'):
     # Construct the request body for the AIProxy call
@@ -196,7 +164,6 @@ def A8(filename='/data/credit_card.txt', image_path='/data/credit_card.png'):
     # Write the extracted card number to the output file
     with open(filename, 'w') as file:
         file.write(card_number)
-# A8()
 
 
 
